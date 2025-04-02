@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdoul-ahad Binizi - Portfolio Cybersecurity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
+        }
+        .gradient-bg-dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        }
+        .skill-bar {
+            height: 6px;
+            border-radius: 3px;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 3px solid #bfdbfe;
+        }
+        .timeline-item-dark:before {
+            border: 3px solid #1e40af;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        .glow:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        .glow-dark:hover {
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.7);
+        }
+        .typed-cursor {
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        /* Transition douce pour le changement de thème */
+        body, .bg-white, .bg-gray-50, .bg-gray-800, .text-gray-800, .text-gray-600, .text-gray-700, .bg-blue-50, .border-gray-200, .shadow-md {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        /* Style for project cards */
+        .project-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .project-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .project-icon {
+            color: #3b82f6;
+        }
+        .dark .project-icon {
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-blue-600 dark:text-blue-400">AB</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-blue-600 font-medium hover:text-blue-800 transition dark:text-blue-400 dark:hover:text-blue-300">Accueil</a>
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition dark:text-gray-300 dark:hover:text-blue-400">À propos</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600 transition dark:text-gray-300 dark:hover:text-blue-400">Compétences</a>
+                    <a href="#experience" class="text-gray-600 hover:text-blue-600 transition dark:text-gray-300 dark:hover:text-blue-400">Parcours</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 transition dark:text-gray-300 dark:hover:text-blue-400">Projets</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 transition dark:text-gray-300 dark:hover:text-blue-400">Contact</a>
+                    <button id="theme-toggle" class="p-2 rounded-full focus:outline-none">
+                        <i id="theme-icon" class="fas fa-moon text-gray-600 dark:text-yellow-300"></i>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full focus:outline-none">
+                        <i id="theme-icon-mobile" class="fas fa-moon text-gray-600 dark:text-yellow-300"></i>
+                    </button>
+                    <button class="mobile-menu-button">
+                        <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-white shadow-lg dark:bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 dark:text-blue-400">Accueil</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">À propos</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Compétences</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Parcours</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Projets</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Contact</a>
+                <div class="flex justify-center pt-2">
+                    <button id="theme-toggle-mobile-menu" class="p-2 rounded-full focus:outline-none">
+                        <i id="theme-icon-mobile-menu" class="fas fa-moon text-gray-600 dark:text-yellow-300"></i> Changer le thème
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg dark:gradient-bg-dark text-white pt-24 pb-20 md:pt-32 md:pb-28">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Abdoul-ahad Binizi</h1>
+                    <div class="text-2xl md:text-3xl font-semibmb-6">
+                        <span id="typed" class="text-blue-200 dark:text-blue-300"></span><span class="typed-cursor">|</span>
+                    </div>
+                    <p class="text-lg mb-8 text-blue-100 dark:text-blue-200">Étudiant en cybersécurité et réseaux à King Khalid University, je recherche un stage ou alternance pour appliquer mes connaissances et acquérir une expérience pratique en sécurité informatique.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition shadow-lg hover:shadow-xl dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700">Contactez-moi</a>
+                        <a href="https://www.linkedin.com/in/abdoul-ahad-binizi-a9570a248" target="_blank" class="px-6 py-3 border border-white text-white rounded-lg font-medium hover:bg-white hover:text-blue-600 transition shadow-lg hover:shadow-xl flex items-center dark:hover:bg-gray-800 dark:hover:text-white">
+                            <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl dark:border-gray-300">
+                        <img src="images/abdoul-ahad-binizi.jpg" alt="Abdoul-ahad Binizi" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">À propos de moi</h2>
+                <div class="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Passionné par la cybersécurité et les réseaux, je combine des compétences techniques solides avec une approche analytique pour sécuriser les systèmes d'information.</p>
+            </div>
+            <div class="md:flex">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Informations personnelles</h3>
+                    <div class="space-y-4">
+                        <div class="flex">
+                            <div class="w-1/3 font-medium text-gray-700 dark:text-gray-300">Nom complet</div>
+                            <div class="w-2/3 text-gray-600 dark:text-gray-400">Abdoul-ahad Binizi</div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-1/3 font-medium text-gray-700 dark:text-gray-300">Âge</div>
+                            <div class="w-2/3 text-gray-600 dark:text-gray-400">27 ans</div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-1/3 font-medium text-gray-700 dark:text-gray-300">Nationalité</div>
+                            <div class="w-2/3 text-gray-600 dark:text-gray-400">Internationale</div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-1/3 font-medium text-gray-700 dark:text-gray-300">Adresse</div>
+                            <div class="w-2/3 text-gray-600 dark:text-gray-400">ABHA, Arabie Saoudite</div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-1/3 font-medium text-gray-700 dark:text-gray-300">Email</div>
+                            <div class="w-2/3 text-gray-600 dark:text-gray-400">abdoulahadhinizi@gmail.com</div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-1/3 font-medium text-gray-700 dark:text-gray-300">Téléphone</div>
+                            <div class="w-2/3 text-gray-600 dark:text-gray-400">+966 50 795 2181</div>
+                        </div>
+                        <div class="flex">
+                            <div class="w-1/3 font-medium text-gray-700 dark:text-gray-300">Langues</div>
+                            <div class="w-2/3 text-gray-600 dark:text-gray-400">Français (courant), Arabe (courant), Anglès (intermédiaire)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Objectif professionnel</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Je recherche un stage ou une alternance en cybersécurité ou administration réseaux pour appliquer mes connaissances théoriques et acquérir une expérience pratique concrète.</p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Je souhaite contribuer à la protection des systèmes d'information contre les cybermenaces tout en perfectionnant mes compétences en sécurité offensive et défensive.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fas fa-shield-alt text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-lg font-medium text-gray-800 dark:text-white">Sécurité offensive</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Pentesting, analyse de vulnérabilités, tests d'intrusion</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fas fa-lock text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-lg font-medium text-gray-800 dark:text-white">Sécurité défensive</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Audit de sécurité, gestion des incidents, cryptographie</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i class="fas fa-network-wired text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-lg font-medium text-gray-800 dark:text-white">Réseaux</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Protocoles TCP/IP, VPN, configuration et sécurisation des réseaux</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Mes compétences</h2>
+                <div class="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Un mélange équilibré de compétences techniques en cybersécurité, réseaux et développement, combinées à des soft skills essentiels pour le travail en équipe.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Technical Skills -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover-scale glow dark:glow-dark">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-laptop-code text-3xl text-blue-600 dark:text-blue-400 mr-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">Compétences techniques</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Pentesting & Hacking Éthique</span>
+                                <span class="text-blue-600 dark:text-blue-400 font-medium">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Sécurité Réseau</span>
+                                <span class="text-blue-600 dark:text-blue-400 font-medium">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-2 rounded-full, style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Administration Linux</span>
+                                <span class="text-blue-600 dark:text-blue-400 font-medium">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-70 dark:text-gray-300">Python/Java/C</span>
+                                <span class="text-blue-600 dark:text-blue-400 font-medium">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">Bases de données</span>
+                                <span class="text-blue-600 dark:text-blue-400 font-medium">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Soft Skills -->
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover-scale glow dark:glow-dark">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-tools text-3xl text-blue-600 dark:text-blue-400 mr-4"></i>
+                        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">Outils & Soft Skills</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fab fa-linux text-blue-600 dark:text-blue-400 mb-2"></i>
+                            <h4 class="font-medium text-gray-800 dark:text-white">Kali Linux</h4>
+                        </div>
+                        <div class="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-network-wired text-blue-600 dark:text-blue-400 mb-2"></i>
+                            <h4 class="font-medium text-gray-800 dark:text-white">Wireshark</h4>
+                        </div>
+                        <div class="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-shield-alt text-blue-600 dark:text-blue-400 mb-2"></i>
+                            <h4 class="font-medium text-gray-800 dark:text-white">Metasploit</h4>
+                        </div>
+                        <div class="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <i class="fas fa-search text-blue-600 dark:text-blue-400 mb-2"></i>
+                            <h4 class="font-medium text-gray-800 dark:text-white">Nmap</h4>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="font-medium text-gray-800 dark:text-white mb-3">Soft Skills</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Travail en équipe</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Gestion du stress</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Créativité</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Persévérance</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Attention aux détails</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Mon parcours</h2>
+                <div class="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Un parcours académique diversifié combinant informatique, langues et gestion, avec une spécialisation récente en cybersécurité et réseaux.</p>
+            </div>
+            
+            <div class="relative max-w-3xl mx-auto">
+                <!-- Education Timeline -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6 flex items-center">
+                        <i class="fas fa-graduation-cap text-blue-六千 dark:text-blue-400 mr-3"></i> Formation académique
+                    </h3>
+                    
+                    <div class="relative pl-12 timeline-item dark:timeline-item-dark">
+                        <div class="bg-blue-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover-scale">
+                            <div class="flex justify-between flex-wrap">
+                                <span class="font-semibold text-blue-600 dark:text-blue-400">Licence en Informatique</span>
+                                <span class="text-gray-500 dark:text-gray-400">Depuis 2022</span>
+                            </div>
+                            <div class="text-gray-600 dark:text-gray-300 mb-2">KING KHALID UNIVERSITY, Arabie Saoudite</div>
+                            <p class="text-gray-700 dark:text-gray-300">Cybersécurité et réseaux • Langue d'étude : Anglais (en cours, 3e année)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-12 timeline-item dark:timeline-item-dark">
+                        <div class="bg-blue-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover-scale">
+                            <div class="flex justify-between flex-wrap">
+                                <span class="font-semibold text-blue-600 dark:text-blue-400">Diplôme en Langue Arabe</span>
+                                <span class="text-gray-500 dark:text-gray-400">2020-2022</span>
+                            </div>
+                            <div class="text-gray-600 dark:text-gray-300 mb-2">KING KHALID UNIVERSITY, Arabie Saoudite</div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-12 timeline-item dark:timeline-item-dark">
+                        <div class="bg-blue-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover-scale">
+                            <div class="flex justify-between flex-wrap">
+                                <span class="font-semibold text-blue-600 dark:text-blue-400">Étude en FaSEG</span>
+                                <span class="text-gray-500 dark:text-gray-400">2016-2020</span>
+                            </div>
+                            <div class="text-gray-600 dark:text-gray-300 mb-2">Université de KARA</div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative pl-12 timeline-item dark:timeline-item-dark">
+                        <div class="bg-blue-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover-scale">
+                            <div class="flex justify-between flex-wrap">
+                                <span class="font-semibold text-blue-600 dark:text-blue-400">Baccalauréat scientifique</span>
+                                <span class="text-gray-500 dark:text-gray-400">2015</span>
+                            </div>
+                            <div class="text-gray-600 dark:text-gray-300 mb-2">LYCEE KARA 2 • Langue d'étude : Français</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Objective -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6 flex items-center">
+                        <i class="fas fa-bullseye text-blue-600 dark:text-blue-400 mr-3"></i> Objectif professionnel
+                    </h3>
+                    <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl border border-gray-200 dark:border-gray-600">
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">En tant qu'étudiant passionné par la cybersécurité, je recherche activement une opportunité de stage ou d'alternance qui me permettrait de :</p>
+                        <ul class="space-y-3 text-gray-700 dark:text-gray-300 pl-5 list-disc">
+                            <li>Mettre en pratique mes connaissances théoriques en sécurité informatique</li>
+                            <li>Participer à des audits de sécurité et tests d'intrusion</li>
+                            <li>Contribuer à la protection des systèmes d'information contre les cybermenaces</li>
+                            <li>Approfondir mes compétences en sécurité offensive et défensive</li>
+                            <li>Acquérir une expérience professionnelle concrète dans le domaine</li>
+                        </ul>
+                        <p class="text-gray-700 dark:text-gray-300 mt-4">Mon objectif à moyen terme est de devenir un expert en cybersécurité capable de concevoir et implémenter des stratégies de sécurité robustes pour les entreprises.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Mes Projets</h2>
+                <div class="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Une sélection de mes projets en cybersécurité, développement web et logiciel démontrant mes compétences techniques.</p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Cybersecurity Projects -->
+                <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shield-alt project-icon text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Pentesting Automation Platform</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Site web intégrant tous les outils de pentesting et d'audit pour les entreprises, pentesters et développeurs.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Cybersécurité</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Pentesting</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-9 00 dark:text-blue-200">Automation</span>
+                    </div>
+                </div>
+
+                <!-- Web Development Projects -->
+                <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-store project-icon text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">AHADMARKET</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Boutique en ligne de dropshipping développée avec WooCommerce sur WordPress (Hostinger). Vente de produits via "ahadmarket.com".
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">E-commerce</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">WordPress</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Dropshipping</span>
+                    </div>
+                </div>
+
+                <!-- AI Project -->
+                <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-robot project-icon text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">AHADMARKETAGENT</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Développement d'une IA pour gérer automatiquement l'affiliation et le dropshipping pour la boutique AHADMARKET.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">IA</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Automatisation</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">E-commerce</span>
+                    </div>
+                </div>
+
+                <!-- Mobile Development -->
+                <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-mobile-alt project-icon text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Audio Verse Duplicator</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Application Android en Kotlin pour dupliquer chaque verset d'un fichier audio tout en conservant la voix originale.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Android</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Kotlin</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Audio Processing</span>
+                    </div>
+                </div>
+
+                <!-- OS Projects -->
+                <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-laptop project-icon text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">OS Installations</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Installation de macOS sur VM, dual boot Ubuntu/Kali Linux et utilisation de Windows 11 sur MacBook Pro 2011.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Linux</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">macOS</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Systèmes d'exploitation</span>
+                    </div>
+                </div>
+
+                <!-- Java Projects -->
+                <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-java project-icon text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Programmation Java</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Développement d'interfaces graphiques (Swing), gestion des threads et structures de données (piles, files d'attente).
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Java</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">GUI</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Multithreading</span>
+                    </div>
+                </div>
+
+                <!-- Academic Projects -->
+                <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-graduation-cap project-icon text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Mathématiques & Informatique</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Études avancées en algèbre linéaire (matrices, déterminants), structures de données et réseaux informatiques (Kurose-Ross).
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Mathématiques</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Algorithmes</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Réseaux</span>
+                    </div>
+                </div>
+
+                <!-- Note Taking Project -->
+                <div class="project-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-edit project-icon text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Auto Note Formatter</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Recherche d'outils automatiques pour formater et organiser les notes de révision académique.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Productivité</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Étude</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm dark:bg-blue-900 dark:text-blue-200">Automatisation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-4">Contactez-moi</h2>
+                <div class="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Disponible pour des opportunités de stage ou alternance en cybersécurité et réseaux. N'hésitez pas à me contacter pour discuter de collaborations potentielles.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nom complet</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject", class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Sujet</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition shadow-lg hover:shadow-xl dark:bg-blue-700 dark:hover:bg-blue-600">Envoyer le message</button>
+                    </form>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover-scale">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 dark:bg-gray-700 p-3 rounded-full">
+                                <i class="fas fa-envelope text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800 dark:text-white">Email</h4>
+                                <p class="text-gray-600 dark:text-gray-400">abdoulahadhinizi@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover-scale">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 dark:bg-gray-700 p-3 rounded-full">
+                                <i class="fas fa-phone-alt text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800 dark:text-white">Téléphone</h4>
+                                <p class="text-gray-600 dark:text-gray-400">+966 50 795 2181</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-80 p-6 rounded-xl shadow-md hover-scale">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 dark:bg-gray-700 p-3 rounded-full">
+                                <i class="fas fa-map-marker-alt text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800 dark:text-white">Adresse</h4>
+                                <p class="text-gray-600 dark:text-gray-400">ABHA, Arabie Saoudite</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover-scale">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 dark:bg-gray-700 p-3 rounded-full">
+                                <i class="fab fa-linkedin-in text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800 dark:text-white">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/abdoul-ahad-binizi-a9570a248" target="_blank" class="text-blue-600 hover:underline dark:text-blue-400">linkedin.com/in/abdoul-ahad-binizi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-800 text-white dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="text-center md:text-left">
+                    <p>&copy; 2023 Abdoul-ahad Binizi. Tous droits réservés.</p>
+                </div>
+                <div class="flex justify-center md:justify-end mt-4 md:mt-0 space-x-6">
+                    <a href="https://www.linkedin.com/in/abdoul-ahad-binizi-a9570a248" target="_blank" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+
+        // Typing animation
+        const typedTexts = [
+            "Spécialiste en cybersécurité",
+            "Pentester éthique",
+            "Administrateur réseaux",
+            "Étudiant en informatique"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedElement = document.getElementById('typed');
+        const cursorElement = document.querySelector('.typed-cursor');
+
+        function type() {
+            const currentText = typedTexts[textIndex];
+            
+            if (isDeleting) {
+                typedElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                isDeleting = true;
+                setTimeout(type, 2000); // Pause at end of typing
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % typedTexts.length;
+                setTimeout(type, 500); // Pause before typing next
+            } else {
+                const typingSpeed = isDeleting ? 50 : 100;
+                setTimeout(type, typingSpeed);
+            }
+        }
+
+        // Start typing animation
+        setTimeout(type, 1000);
+
+        // Smooth scrolling for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.querySelector('.mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+        const themeToggleMobileMenu = document.getElementById('theme-toggle-mobile-menu');
+        const themeIconMobileMenu = document.getElementById('theme-icon-mobile-menu');
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                if (themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+                if (themeIconMobile) themeIconMobile.classList.replace('fa-sun', 'fa-moon');
+                if (themeIconMobileMenu) themeIconMobileMenu.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+                if (themeIconMobile) themeIconMobile.classList.replace('fa-moon', 'fa-sun');
+                if (themeIconMobileMenu) themeIconMobileMenu.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        // Check for saved theme preference or use system preference
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+            if (themeIconMobile) themeIconMobile.classList.replace('fa-moon', 'fa-sun');
+            if (themeIconMobileMenu) themeIconMobileMenu.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // Event listeners for theme toggles
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', toggleTheme);
+        }
+        if (themeToggleMobileMenu) {
+            themeToggleMobileMenu.addEventListener('click', toggleTheme);
+        }
+    </script>
+</body>
+</html>                        tu peux faire en sorte que moi meme je uisse changer ca sur le site en navigant dans mes gestionaire de fichier sans toucher au code source ?
